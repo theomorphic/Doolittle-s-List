@@ -1,0 +1,184 @@
+/* Основные стили в готическом стиле */
+:root {
+  --gothic-dark: #1a1a1a;
+  --gothic-accent: #5c2d91;
+  --gothic-highlight: #8a6dbb;
+  --gothic-text: #e0e0e0;
+  --gothic-red: #8b0000;
+  --gothic-gold: #d4af37;
+}
+
+.to-do-list {
+  font-family: 'UnifrakturMaguntia', 'Times New Roman', serif;
+  background-color: var(--gothic-dark);
+  color: var(--gothic-text);
+  min-height: 100vh;
+  padding: 2rem;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(92, 45, 145, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 20%);
+  text-align: center;
+
+  
+  
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: var(--gothic-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gothic-gold), transparent);
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 2rem auto;
+  counter-reset: gothic-counter;
+}
+
+li {
+  counter-increment: gothic-counter;
+  position: relative;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  background-color: rgba(30, 30, 30, 0.8);
+  border-left: 4px solid var(--gothic-accent);
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+li::before {
+  content: counter(gothic-counter);
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--gothic-accent);
+  color: var(--gothic-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(92, 45, 145, 0.5);
+}
+
+.text {
+  flex: 1;
+  text-align: left;
+  padding-left: 1rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  font-family: 'Cormorant SC', serif;
+}
+
+input[type="text"] {
+  font-family: 'Cormorant SC', serif;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  background: rgba(40, 40, 40, 0.8);
+  border: 2px solid var(--gothic-accent);
+  color: var(--gothic-text);
+  border-radius: 4px;
+  width: 60%;
+  max-width: 500px;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--gothic-gold);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+button {
+  font-family: 'Cormorant SC', serif;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.1rem;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: all 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+.add-button {
+  background-color: var(--gothic-accent);
+  color: white;
+}
+
+.add-button:hover {
+  background-color: var(--gothic-highlight);
+}
+
+.delete-button {
+  background-color: var(--gothic-red);
+  color: white;
+  margin-left: 3px;
+}
+
+.delete-button:hover {
+  background-color: #6b0000;
+}
+
+.move-button {
+  background-color: #333;
+  color: var(--gothic-gold);
+  margin-left: 8px;
+}
+
+.move-button:hover {
+  background-color: #444;
+  color: #f0d070;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+li {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Подключение готических шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&family=UnifrakturMaguntia&display=swap');
